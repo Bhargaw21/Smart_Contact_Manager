@@ -115,10 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              Swal.fire("Saved!", "", "success");
-            } else if (result.isDenied) {
-              Swal.fire("Changes are not saved", "", "info");
-            }
+             const url = "http://localhost:8081/user/contacts/delete/"  +id;
+             window.location.replace(url);
+            } 
           });
     }
 });
