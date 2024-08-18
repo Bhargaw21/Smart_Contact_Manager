@@ -8,6 +8,7 @@ public class helper {
 
     public static String getEmailOfLoggedInUser(Authentication authentication) {
 
+
         // Principal principal = (Principal) authentication.getPrincipal();
 
         // agar email is password se login liya hai toh : email kaise nikalenge
@@ -47,4 +48,11 @@ public class helper {
 
     }
 
+
+public static String getLinkForEmailVerification(String emailToken){
+
+    String link = "http://localhost:8081/auth/verify-email?token=" + emailToken;
+
+    return link;
+} 
 }

@@ -49,7 +49,7 @@ public class User implements UserDetails {
     @Getter(value = AccessLevel.NONE)
 
     // information
-    private boolean enabled = true;
+    private boolean enabled = false;
     private boolean emailVerified = false;
     private boolean phoneNummberverified = false;
 
@@ -64,6 +64,8 @@ public class User implements UserDetails {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> rolelist = new ArrayList<>();
 
+
+    private String emailToken;
 
 
     @Override
@@ -93,6 +95,7 @@ public class User implements UserDetails {
         return true;
     }
 
+    @Override
     public boolean isEnabled() {
         return this.enabled;
     }

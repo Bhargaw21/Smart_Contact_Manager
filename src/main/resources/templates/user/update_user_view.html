@@ -2,7 +2,7 @@
 <html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
 
 <head>
-    <title>Add Contact</title>
+    <title>Update Contact</title>
 </head>
 
 <body 
@@ -20,11 +20,11 @@
                 <div
                     class=" card block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <div data-th-replace="message::messagebox"></div>
-                    <h1 class="text-5xl">Add New Contact</h1>
-                    <p class="text-gray-500">This contact will be store on cloud</p>
-                    <form action="" 
+                    <h1 class="text-5xl">Update Contact</h1>
+                    
+                    <form 
                      class="mt-5"
-                     data-th-action="@{'/user/contacts/add'}"
+                     data-th-action="@{'/user/contacts/update/' + ${contactId}}"
                      data-th-object="${contactForm}"
                      method="post"
                      enctype="multipart/form-data"
@@ -192,7 +192,6 @@
                                       alt=""
                                     />
                                   </div>
-
                                 <!--favourite checkbox field-->
 
                                 <div class="flex mt-50 mb-8 ">
@@ -208,7 +207,7 @@
                                 <div class="button-container text-center">
                                     <button type="submit"
                                         class="px-3 py-2 rounded bg-red-700 hover:bg-red-800 dark:bg-green-800 hover:dark:bg-green-900 text-white">
-                                        Add Contact
+                                        Update  Contact
                                     </button>
 
                                     <button type="reset"

@@ -16,7 +16,6 @@ import com.scm.helpers.ResourceNotFoundException;
 import com.scm.repositories.ContactRepo;
 import com.scm.services.ContactService;
 
-import lombok.var;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -33,8 +32,21 @@ public class ContactServiceImpl implements ContactService {
 
        @Override
     public contact update(contact Contact) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        var contactOld = contactRepo.findById(Contact.getId()).orElseThrow(()-> new ResourceNotFoundException("Contact not found with given id "));
+        contactOld.setName(Contact.getName());
+        contactOld.setEmail(Contact.getEmail());
+        contactOld.setAddress(Contact.getAddress());
+        contactOld.setDescription(Contact.getDescription());
+        contactOld.setPhoneNumber(Contact.getPhoneNumber());
+        contactOld.setPicture(Contact.getPicture());
+        contactOld.setWebsitelink(Contact.getWebsitelink());
+        contactOld.setLinkednLink(Contact.getLinkednLink());
+        contactOld.setFavorite(Contact.isFavorite());
+        contactOld.setCloudianryImagePublicId(Contact.getCloudianryImagePublicId());
+        contactOld.setLinks(Contact.getLinks());
+
+        return  contactRepo.save(contactOld);
+
     }
 
     @Override
